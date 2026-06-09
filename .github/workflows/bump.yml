@@ -19,6 +19,10 @@ jobs:
       - name: Configure git
         uses: Homebrew/actions/git-user-config@59e6b20d96df1a3c9ccb0aa402676e01a4cc6ff3 # main
 
+      - name: Trust tap
+        run: |
+          brew trust tb516/helium-browser-linux
+
       - name: Run brew bump
         env:
           HOMEBREW_DEVELOPER: 1
