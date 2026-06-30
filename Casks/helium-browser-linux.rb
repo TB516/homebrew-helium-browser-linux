@@ -2,9 +2,8 @@ cask "helium-browser-linux" do
   arch arm: "arm64", intel: "x86_64"
   os linux: "linux"
 
-  version "0.13.4.1"
-
   on_linux do
+    version "0.13.4.1"
     sha256 arm64_linux:  "c661c3eb9254206e2fb95fc86ca203be8588a8c7b5e42e6a079fa37075c3be49",
            x86_64_linux: "aedfffc1c0271fb9f5a25fcf7cfdfb6b11e92142ab59749037a4a2b06b44ee1c"
   end
