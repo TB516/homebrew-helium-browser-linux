@@ -3,9 +3,9 @@ cask "helium-browser-linux" do
   os linux: "linux"
 
   on_linux do
-    version "0.14.6.1"
-    sha256 arm64_linux:  "dd4566a1dc3d6f7572de1cc034bf5764a4c5aaaf71785f7dfece83a501b58a19",
-           x86_64_linux: "2717a5b827bac7d785d61a783d1208e52d1d97849c556f681c96a835b571bfb0"
+    version "0.14.7.1"
+    sha256 arm64_linux:  "cf87a340f8f841ea3718bf85f8814342de1584b4ee1c6af82d66a65011f7d38d",
+           x86_64_linux: "5bba7e0c4c7ce69e7ab22fa134028554ce2af2b8796992d2f8136651316ba221"
   end
 
   url "https://github.com/imputnet/helium-linux/releases/download/#{version}/helium-#{version}-#{arch}_linux.tar.xz"
