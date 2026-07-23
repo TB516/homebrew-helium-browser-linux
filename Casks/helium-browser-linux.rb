@@ -8,7 +8,8 @@ cask "helium-browser-linux" do
            x86_64_linux: "5bba7e0c4c7ce69e7ab22fa134028554ce2af2b8796992d2f8136651316ba221"
   end
 
-  url "https://github.com/imputnet/helium-linux/releases/download/#{version}/helium-#{version}-#{arch}_linux.tar.xz"
+  url "https://github.com/imputnet/helium-linux/releases/download/#{version}/helium-#{version}-#{arch}_linux.tar.xz",
+      verified: "github.com/imputnet/helium-linux/"
   name "Helium"
   desc "Private, fast, and honest web browser"
   homepage "https://helium.computer/"
