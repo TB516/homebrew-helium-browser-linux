@@ -1,12 +1,9 @@
 cask "helium-browser-linux" do
   arch arm: "arm64", intel: "x86_64"
-  os linux: "linux"
 
-  on_linux do
-    version "0.15.4.1"
-    sha256 arm64_linux:  "253740c49008a76d9ca4f4736b2dc35a90fa4ef17437d37487466aada87ed6e4",
-           x86_64_linux: "ab1f761b65567dddd062bd0462d342a0994d7c6380be1ef5710b8513903c1f3c"
-  end
+  version "0.15.4.1"
+  sha256 arm64_linux:  "253740c49008a76d9ca4f4736b2dc35a90fa4ef17437d37487466aada87ed6e4",
+         x86_64_linux: "ab1f761b65567dddd062bd0462d342a0994d7c6380be1ef5710b8513903c1f3c"
 
   url "https://github.com/imputnet/helium-linux/releases/download/#{version}/helium-#{version}-#{arch}_linux.tar.xz",
       verified: "github.com/imputnet/helium-linux/"
@@ -18,6 +15,8 @@ cask "helium-browser-linux" do
     url "https://github.com/imputnet/helium-linux/releases"
     strategy :github_latest
   end
+
+  depends_on :linux
 
   binary "helium-#{version}-#{arch}_linux/helium-wrapper", target: "helium"
   artifact "helium-#{version}-#{arch}_linux/helium.desktop",
