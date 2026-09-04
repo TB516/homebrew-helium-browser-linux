@@ -6,9 +6,22 @@ on:
 
   workflow_dispatch:
 
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/bump.yml"
+
 jobs:
   bump:
+    if: >-
+      github.event_name != 'pull_request' ||
+      (
+        github.event.pull_request.user.login == 'dependabot[bot]' &&
+        github.event.pull_request.head.repo.full_name == github.repository
+      )
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       contents: write
       pull-requests: write
@@ -26,6 +39,10 @@ jobs:
       - name: Run brew bump
         env:
           HOMEBREW_DEVELOPER: 1
-          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HOMEBREW_GITHUB_API_TOKEN: ${{ github.token }}
         run: |
-          brew bump --tap ${{ github.repository }} --open-pr --no-fork
+          if [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
+            brew bump --tap "${GITHUB_REPOSITORY}" --no-pull-requests
+          else
+            brew bump --tap "${GITHUB_REPOSITORY}" --open-pr --no-fork
+          fi
