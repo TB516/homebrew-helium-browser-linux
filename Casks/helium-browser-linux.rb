@@ -23,21 +23,15 @@ cask "helium-browser-linux" do
   artifact "helium-#{version}-#{arch}_linux/product_logo_256.png",
            target: "#{ENV["XDG_DATA_HOME"] || "#{Dir.home}/.local/share"}/icons/hicolor/256x256/apps/helium.png"
 
-  preflight do
-    xdg_data_home = ENV["XDG_DATA_HOME"] || "#{Dir.home}/.local/share"
+  xdg_data_home = ENV["XDG_DATA_HOME"] || "#{Dir.home}/.local/share"
+  desktop_file = "helium-#{version}-#{arch}_linux/helium.desktop"
 
-    FileUtils.mkdir_p "#{xdg_data_home}/applications"
-    FileUtils.mkdir_p "#{xdg_data_home}/icons/hicolor/256x256/apps"
+  preflight_steps do
+    mkdir_p "#{xdg_data_home}/applications"
+    mkdir_p "#{xdg_data_home}/icons/hicolor/256x256/apps"
 
-    desktop_file = "#{staged_path}/helium-#{version}-#{arch}_linux/helium.desktop"
-    contents = File.read(desktop_file)
-
-    brew_exec = "#{HOMEBREW_PREFIX}/bin/helium"
-
-    contents.gsub!(/^Exec=helium(.*)$/, "Exec=#{brew_exec}\\1")
-    contents.gsub!(/^StartupNotify=true$/, "StartupNotify=false")
-
-    File.write(desktop_file, contents)
+    inreplace desktop_file, /^Exec=helium(.*)$/, "Exec=#{HOMEBREW_PREFIX}/bin/helium\\1"
+    inreplace desktop_file, /^StartupNotify=true$/, "StartupNotify=false"
   end
 
   zap trash: [
