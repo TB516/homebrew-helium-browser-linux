@@ -30,7 +30,7 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@3cdb78d0f62ad29dd32de765782654f4eedea607 # main
 
       - name: Configure git
-        uses: Homebrew/actions/git-user-config@3cdb78d0f62ad29dd32de765782654f4eedea607 # main
+        uses: Homebrew/actions/git-user-config@f8d4222eb633e65c2a0157383cf80861fc7fae7f # main
 
       - name: Trust tap
         run: |
