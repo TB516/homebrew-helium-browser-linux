@@ -1,12 +1,18 @@
-# Unofficial linux homebrew cask for Helium browser
+# Unofficial Linux Homebrew cask for Helium browser
 
-This is an unofficial linux cask for Helium browser, helpful to set up Helium on systems where the native package isn't available.
+## Deprecated and unmaintained
 
-## Installation
+This unofficial tap is no longer maintained and is being retired. It will not receive browser updates, including security updates.
 
-1. `brew tap tb516/helium-browser-linux`
-2. `brew install helium-browser-linux`
+Use [Helium's official downloads](https://helium.computer/) instead. This notice applies to this tap, not to the upstream Helium project.
 
 ## Uninstallation
 
-1. `brew remove helium-browser-linux` or `brew remove --zap helium-browser-linux` for a full uninstall
+After moving to another installation, remove the cask and tap:
+
+```sh
+brew uninstall --cask helium-browser-linux
+brew untap tb516/helium-browser-linux
+```
+
+To also delete your Helium profile and cache, use `brew uninstall --cask --zap helium-browser-linux` instead. This deletes your browser data, so back it up or migrate it first.

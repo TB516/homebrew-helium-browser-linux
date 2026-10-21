@@ -15,6 +15,8 @@ cask "helium-browser-linux" do
     strategy :github_latest
   end
 
+  deprecate! date: "2026-10-21", because: "this unofficial tap is no longer maintained"
+
   depends_on :linux
 
   rename "helium-#{version}-#{arch}_linux", "helium"
